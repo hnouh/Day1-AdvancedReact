@@ -7,7 +7,7 @@ const Profile = ({ login }) => {
     if (!login) {
       navigate("/");
     }
-  }, [login, navigate]);
+  }, [login]);
 
   return (
     <>
