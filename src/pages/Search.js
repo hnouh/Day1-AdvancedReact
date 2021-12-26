@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 const Search = () => {
   const [language, setLanguage] = useState("");
+  const [input, setInput] = useState('');
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
@@ -11,8 +12,9 @@ const Search = () => {
   }, []);
 
   function changeLanguage() {
-    setLanguage(language);
-    navigate(`/search/?q=${language}`);
+    setLanguage(input);
+    navigate(`/search/?q=${input}`);
+    setInput('')
   }
 
   return (
@@ -21,16 +23,16 @@ const Search = () => {
         <h1>{language}</h1>
         <p>{language} is the most powerful language</p>
         <input
-          value={language}
+          value={input}
           onChange={(e) => {
-            setLanguage(e.target.value);
+            setInput(e.target.value);
           }}
           type="text"
           placeholder="your fav language"
         ></input>
         <button
-          onClick={(e) => {
-            changeLanguage(e);
+          onClick={() => {
+            changeLanguage();
           }}
         >
           Change language
